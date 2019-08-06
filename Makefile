@@ -1001,6 +1001,8 @@ else
 CC_FLAGS_LTO	+= -fvisibility=default
 endif
 
+# Set O3 optimization level for LTO
+KBUILD_LDFLAGS		+= --plugin-opt=O3
 endif
 
 ifdef CONFIG_LTO
