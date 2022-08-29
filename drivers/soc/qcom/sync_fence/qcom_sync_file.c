@@ -39,6 +39,12 @@ struct dummy_spec_fence {
 	spinlock_t lock;
 };
 
+#if IS_ENABLED(CONFIG_DEBUG_FS)
+	#define MAX_DEVICE_SUPPORTED	2
+#else
+	#define MAX_DEVICE_SUPPORTED	1
+#endif
+
 struct sync_device {
 	/* device info */
 	struct class *dev_class;
@@ -124,9 +130,9 @@ static void clear_fence_array_tracker(bool force_clear)
 
 static struct sync_device *spec_fence_init_locked(struct sync_device *obj, const char *name)
 {
-	if (atomic_read(&obj->device_available) > 1) {
-		pr_err("number of device fds are limited by 2, device opened:%d\n",
-			atomic_read(&obj->device_available));
+	if (atomic_read(&obj->device_available) >= MAX_DEVICE_SUPPORTED) {
+		pr_err("number of device fds are limited to %d, device opened:%d\n",
+			MAX_DEVICE_SUPPORTED, atomic_read(&obj->device_available));
 		return NULL;
 	} else if (!atomic_read(&obj->device_available)) {
 		memset(obj->name, 0, NAME_LEN);
