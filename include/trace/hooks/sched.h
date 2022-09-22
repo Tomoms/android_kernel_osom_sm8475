@@ -421,6 +421,9 @@ DECLARE_HOOK(android_vh_cpu_cgroup_css_free,
 	TP_PROTO(struct cgroup_subsys_state *css),
 	TP_ARGS(css));
 
+DECLARE_HOOK(android_vh_rebuild_root_domains_bypass,
+	TP_PROTO(bool cpuhp_tasks_frozen, bool *bypass),
+	TP_ARGS(cpuhp_tasks_frozen, bypass));
 /* macro versions of hooks are no longer required */
 
 #endif /* _TRACE_HOOK_SCHED_H */
