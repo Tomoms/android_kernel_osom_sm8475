@@ -579,3 +579,4 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_should_fault_around);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_do_read_fault);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_filemap_read);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_filemap_map_pages);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_rebuild_root_domains_bypass);
