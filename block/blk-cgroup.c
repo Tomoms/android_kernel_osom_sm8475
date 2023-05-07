@@ -1928,6 +1928,9 @@ void blk_cgroup_bio_start(struct bio *bio)
 	int rwd = blk_cgroup_io_type(bio), cpu;
 	struct blkg_iostat_set *bis;
 
+	if (!cgroup_subsys_on_dfl(io_cgrp_subsys))
+		return;
+
 	cpu = get_cpu();
 	bis = per_cpu_ptr(bio->bi_blkg->iostat_cpu, cpu);
 	u64_stats_update_begin(&bis->sync);
@@ -1943,8 +1946,7 @@ void blk_cgroup_bio_start(struct bio *bio)
 	bis->cur.ios[rwd]++;
 
 	u64_stats_update_end(&bis->sync);
-	if (cgroup_subsys_on_dfl(io_cgrp_subsys))
-		cgroup_rstat_updated(bio->bi_blkg->blkcg->css.cgroup, cpu);
+	cgroup_rstat_updated(bio->bi_blkg->blkcg->css.cgroup, cpu);
 	put_cpu();
 }
 
