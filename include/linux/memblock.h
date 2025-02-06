@@ -605,6 +605,8 @@ static inline void early_memtest(phys_addr_t start, phys_addr_t end)
 }
 #endif
 
+extern void early_memzero(phys_addr_t start, phys_addr_t end);
+
 #endif /* __KERNEL__ */
 
 #endif /* _LINUX_MEMBLOCK_H */
