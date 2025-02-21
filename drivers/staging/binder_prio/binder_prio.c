@@ -9,7 +9,6 @@
 #include <linux/string.h>
 
 static const char *task_name[] = {
-	"com.miui.home",
 	"droid.launcher3",  // com.android.launcher3
 	"ndroid.systemui",  // com.android.systemui
 	"surfaceflinger",
