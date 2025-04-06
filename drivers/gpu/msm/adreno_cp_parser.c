@@ -17,8 +17,6 @@
 #define IB_LEVEL_2 2
 #define IB_LEVEL_3 3
 
-struct snapshot_ib_meta metadata;
-
 struct set_draw_state {
 	uint64_t cmd_stream_addr;
 	uint64_t cmd_stream_dwords;
@@ -812,22 +810,7 @@ static int adreno_cp_parse_ibn(struct kgsl_device *device,
 
 static s64 get_ib_base(struct adreno_device *adreno_dev, int ib_level)
 {
-	struct kgsl_device *device = KGSL_DEVICE(adreno_dev);
 	s64 ibbase = 0;
-
-	switch (ib_level) {
-	case IB_LEVEL_2:
-		ibbase = metadata.ib2base;
-		break;
-	case IB_LEVEL_3:
-		if (!adreno_is_a5xx(adreno_dev) && !adreno_is_a6xx(adreno_dev))
-			ibbase = metadata.ib3base;
-		break;
-	default:
-		/* Invalid IB level */
-		dev_err(device->dev, "Invalid IB level %d\n", ib_level);
-		return -EINVAL;
-	}
 
 	return ibbase;
 }
