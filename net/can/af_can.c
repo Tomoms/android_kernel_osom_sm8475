@@ -288,8 +288,8 @@ int can_send(struct sk_buff *skb, int loop)
 		netif_rx_ni(newskb);
 
 	/* update statistics */
-	atomic_long_inc(&pkg_stats->tx_frames);
-	atomic_long_inc(&pkg_stats->tx_frames_delta);
+	pkg_stats->tx_frames++;
+	pkg_stats->tx_frames_delta++;
 
 	return 0;
 
@@ -659,8 +659,8 @@ static void can_receive(struct sk_buff *skb, struct net_device *dev)
 	int matches;
 
 	/* update statistics */
-	atomic_long_inc(&pkg_stats->rx_frames);
-	atomic_long_inc(&pkg_stats->rx_frames_delta);
+	pkg_stats->rx_frames++;
+	pkg_stats->rx_frames_delta++;
 
 	can_set_skb_uid(skb);
 
@@ -679,8 +679,8 @@ static void can_receive(struct sk_buff *skb, struct net_device *dev)
 	consume_skb(skb);
 
 	if (matches > 0) {
-		atomic_long_inc(&pkg_stats->matches);
-		atomic_long_inc(&pkg_stats->matches_delta);
+		pkg_stats->matches++;
+		pkg_stats->matches_delta++;
 	}
 }
 
