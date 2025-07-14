@@ -11,3 +11,4 @@ obj-$(CONFIG_GOLDFISH)		+= goldfish/
 obj-$(CONFIG_CHROME_PLATFORMS)	+= chrome/
 obj-$(CONFIG_SURFACE_PLATFORMS)	+= surface/
 obj-$(CONFIG_ARCH_QCOM)		+= msm/
+obj-$(CONFIG_SURFACE_PLATFORMS)	+= surface/
