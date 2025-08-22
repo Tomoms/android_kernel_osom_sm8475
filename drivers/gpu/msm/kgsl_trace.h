@@ -5,6 +5,7 @@
  */
 
 #define trace_gpu_frequency(...) ((void)0)
+#define trace_gpu_work_period(...) ((void)0)
 #define trace_kgsl_a3xx_irq_status(...) ((void)0)
 #define trace_kgsl_a4xx_irq_status(...) ((void)0)
 #define trace_kgsl_a5xx_irq_status(...) ((void)0)
@@ -75,6 +76,7 @@
 #define trace_syncpoint_fence_expire(...) ((void)0)
 #define trace_syncpoint_timestamp(...) ((void)0)
 #define trace_syncpoint_timestamp_expire(...) ((void)0)
+#define KGSL_TRACE_GPU_FREQ(freq, gpu_id) ((void)0)
 
 #if 0
 #if !defined(_KGSL_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
