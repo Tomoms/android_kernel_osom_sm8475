@@ -3,7 +3,7 @@
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
-#if !defined(_KGSL_POWER_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
+#if 0
 #define _KGSL_POWER_TRACE_H
 
 #undef TRACE_SYSTEM
@@ -73,6 +73,3 @@ TRACE_EVENT(gpu_frequency,
 		(unsigned long)__entry->gpu_id)
 );
 #endif /* _KGSL_POWER_TRACE_H */
-
-/* This part must be outside protection */
-#include <trace/define_trace.h>
