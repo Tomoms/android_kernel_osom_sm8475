@@ -77,9 +77,10 @@ typedef enum { noDictCtx, usingDictCtxHc } dictCtx_directive;
 
 
 /*===   Macros   ===*/
-#define MIN(a,b)   ( (a) < (b) ? (a) : (b) )
-#define MAX(a,b)   ( (a) > (b) ? (a) : (b) )
-
+#undef MIN
+#undef MAX
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 /*===   Levels definition   ===*/
 typedef enum { lz4mid, lz4hc, lz4opt } lz4hc_strat_e;
