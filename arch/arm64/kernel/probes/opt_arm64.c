@@ -229,7 +229,7 @@ void optprobe_optimized_callback(struct optimized_kprobe *op, struct pt_regs *re
 	if (kprobe_disabled(&op->kp))
 		return;
 
-	guard(preempt)();
+	preempt_disable();
 
 	if (kprobe_running()) {
 		kprobes_inc_nmissed_count(&op->kp);
@@ -239,5 +239,7 @@ void optprobe_optimized_callback(struct optimized_kprobe *op, struct pt_regs *re
 		opt_pre_handler(&op->kp, regs);
 		__this_cpu_write(current_kprobe, NULL);
 	}
+
+	preempt_enable();
 }
 NOKPROBE_SYMBOL(optprobe_optimized_callback)
