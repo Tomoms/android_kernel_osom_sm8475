@@ -176,8 +176,6 @@ int mhi_init_irq_setup(struct mhi_controller *mhi_cntrl)
 			continue;
 
 		if (mhi_event->irq >= mhi_cntrl->nr_irqs) {
-			MHI_ERR("irq %d not available for event ring\n",
-				mhi_event->irq);
 			ret = -EINVAL;
 			goto error_request;
 		}
@@ -187,8 +185,6 @@ int mhi_init_irq_setup(struct mhi_controller *mhi_cntrl)
 				  IRQF_SHARED | IRQF_NO_SUSPEND,
 				  "mhi", mhi_event);
 		if (ret) {
-			MHI_ERR("Error requesting irq:%d for ev:%d\n",
-				mhi_cntrl->irq[mhi_event->irq], i);
 			goto error_request;
 		}
 	}
