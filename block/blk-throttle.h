@@ -1,7 +1,7 @@
 #ifndef BLK_THROTTLE_H
 #define BLK_THROTTLE_H
 
-#include <rcupdate.h>
+#include <linux/rcupdate.h>
 #include "blk-cgroup-rwstat.h"
 
 /*
